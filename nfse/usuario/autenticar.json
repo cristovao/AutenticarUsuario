@@ -68,7 +68,7 @@
             }
           },
           "401": {
-            "description": "Chave de sessÃ£o invalida",
+            "description": "Chave de sessao invalida",
             "schema": {
               "type": "string"
             }
@@ -79,7 +79,7 @@
         {
           "name": "sessionKey",
           "in": "path",
-          "description": "Chave de sessÃ£o obtida do mÃ©todo obterChaveAcesso",
+          "description": "Chave de sessÃ£o obtida do metodo obterChaveAcesso",
           "required": true,
           "type": "string"
         }
