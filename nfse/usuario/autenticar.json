@@ -79,7 +79,7 @@
         {
           "name": "sessionKey",
           "in": "path",
-          "description": "Chave de sessÃ£o obtida do metodo obterChaveAcesso",
+          "description": "Chave de sessao obtida do metodo obterChaveAcesso",
           "required": true,
           "type": "string"
         }
