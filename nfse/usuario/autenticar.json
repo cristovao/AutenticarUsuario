@@ -97,7 +97,7 @@
           "type": "string"
         },
         "nome": {
-          "description": "Nome ou razÃÂ£o social do usuÃÂ¡rio que esta acessando o sistema",
+          "description": "Nome ou razao social do usuario que esta acessando o sistema",
           "type": "string"
         },
         "sessionKey": {
@@ -112,9 +112,11 @@
       "type": "object",
       "properties": {
         "numeroDocumento": {
+          "description": "Numero do documento usado, podendo ser CPF ou CNPJ",
           "type": "string"
         },
         "nome": {
+          "description": "Nome ou razao social do usuario que esta acessando o sistema",
           "type": "string"
         }
       }
