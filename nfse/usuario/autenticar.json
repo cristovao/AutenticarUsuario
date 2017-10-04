@@ -1,1 +1,105 @@
-{"info":{"title":"AutenticarUsuario","description":"Processo de autenticação de usuários usando como referencia o ticket: http://redmine.recife.pe.gov.br/issues/176496 ","version":"1.0.0"},"swagger":"2.0"}
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "AutenticarUsuario",
+    "description": "Processo de autenticaÃ§Ã£o de usuÃ¡rios usando como referencia o ticket: http://redmine.recife.pe.gov.br/issues/176496 ",
+    "license": {
+      "name": "GNU LGPLv3",
+      "url": "https://www.gnu.org/licenses/lgpl.txt"
+    },
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/obterChaveAcesso": {
+      "get": {
+        "summary": "Chave de acesso",
+        "description": "Numero do documento (CPF ou CNJ)\nsessionKey (chave utilizada pelo serviÃ§o NFSE)\nnomeRazaoSocial\n",
+        "parameters": [
+          {
+            "name": "numeroDocumento",
+            "in": "query",
+            "description": "Numero de documento (CPF ou CNPJ)",
+            "type": "string"
+          },
+          {
+            "name": "senha",
+            "in": "query",
+            "description": "A senha de acesso do usuario",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Dados de acesso do usuÃ¡rio para reutilizaÃ§Ã£o com outras Ã¡reas do sistema",
+            "schema": {
+              "$ref": "#/definitions/Acesso"
+            }
+          },
+          "400": {
+            "description": "Senha InvÃ¡lida",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "401": {
+            "description": "Usuario nÃ£o autorizado",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "403": {
+            "description": "Documento nÃ£o encontrado",
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "/validarChaveAcesso/{sessionKey}": {
+      "get": {
+        "summary": "Valida a chave de acesso",
+        "description": "Permite validar a chave de sessÃ£o para analisar se o usuÃ¡rio ainda possui sessÃ£o para continuar a pesquisa dos dados",
+        "responses": {
+          "200": {
+            "description": "Retorna os dados bÃ¡sicos do usuario"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Acesso": {
+      "title": "Root Type for Acesso",
+      "description": "The root of the Acesso type's schema.",
+      "type": "object",
+      "properties": {
+        "numeroDocumento": {
+          "description": "Numero do documento usado, podendo ser CPF ou CNPJ",
+          "type": "string"
+        },
+        "nome": {
+          "description": "Nome ou razÃ£o social do usuÃ¡rio que esta acessando o sistema",
+          "type": "string"
+        },
+        "sessionKey": {
+          "description": "Chave de acesso temporario para os outros recursos",
+          "type": "string"
+        }
+      }
+    },
+    "Usuario": {
+      "title": "Root Type for Usuario",
+      "description": "The root of the Usuario type's schema.",
+      "type": "object",
+      "properties": {
+        "numeroDocumento": {
+          "type": "string"
+        },
+        "nome": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
