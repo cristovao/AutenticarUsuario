@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "title": "AutenticarUsuario",
-    "description": "Processo de autenticaÃÂ§ÃÂ£o de usuÃÂ¡rios usando como referencia o ticket: http://redmine.recife.pe.gov.br/issues/176496 ",
+    "description": "Processo de autenticacao de usuarios usando como referencia o ticket: http://redmine.recife.pe.gov.br/issues/176496 ",
     "license": {
       "name": "GNU LGPLv3",
       "url": "https://www.gnu.org/licenses/lgpl.txt"
@@ -13,7 +13,7 @@
     "/obterChaveAcesso": {
       "get": {
         "summary": "Chave de acesso",
-        "description": "Numero do documento (CPF ou CNJ)\nsessionKey (chave utilizada pelo serviÃÂ§o NFSE)\nnomeRazaoSocial\n",
+        "description": "Retorna a chave de acesso do sistema para que possa ser usado para obter uma nova chave de sessao\n",
         "parameters": [
           {
             "name": "numeroDocumento",
@@ -30,25 +30,25 @@
         ],
         "responses": {
           "200": {
-            "description": "Dados de acesso do usuÃÂ¡rio para reutilizaÃÂ§ÃÂ£o com outras ÃÂ¡reas do sistema",
+            "description": "Dados de acesso do usuario para reutilizacao com outras areas do sistema",
             "schema": {
               "$ref": "#/definitions/Acesso"
             }
           },
           "400": {
-            "description": "Senha InvÃÂ¡lida",
+            "description": "Senha Invalida",
             "schema": {
               "type": "string"
             }
           },
           "401": {
-            "description": "Usuario nÃÂ£o autorizado",
+            "description": "Usuario nao autorizado",
             "schema": {
               "type": "string"
             }
           },
           "403": {
-            "description": "Documento nÃÂ£o encontrado",
+            "description": "Documento nao encontrado",
             "schema": {
               "type": "string"
             }
@@ -59,16 +59,16 @@
     "/validarChaveAcesso/{sessionKey}": {
       "get": {
         "summary": "Valida a chave de acesso",
-        "description": "Permite validar a chave de sessÃÂ£o para analisar se o usuÃÂ¡rio ainda possui sessÃÂ£o para continuar a pesquisa dos dados",
+        "description": "Permite validar a chave de sessao para analisar se o usuario ainda possui sessao para continuar a pesquisa dos dados",
         "responses": {
           "200": {
-            "description": "Retorna os dados bÃÂ¡sicos do usuario",
+            "description": "Retorna os dados basicos do usuario",
             "schema": {
               "$ref": "#/definitions/Usuario"
             }
           },
           "401": {
-            "description": "Chave de sessÃ£o invÃ¡lida",
+            "description": "Chave de sessÃ£o invalida",
             "schema": {
               "type": "string"
             }
