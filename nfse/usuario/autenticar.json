@@ -10,8 +10,37 @@
     "version": "1.0.0"
   },
   "paths": {
-    "/obterChaveAcesso": {
-      "get": {
+    "/validar-chave-acesso/{sessionKey}/": {
+      "post": {
+        "summary": "Valida a chave de acesso",
+        "description": "Permite validar a chave de sessao para analisar se o usuario ainda possui sessao para continuar a pesquisa dos dados",
+        "responses": {
+          "200": {
+            "description": "Retorna os dados basicos do usuario",
+            "schema": {
+              "$ref": "#/definitions/Usuario"
+            }
+          },
+          "401": {
+            "description": "Chave de sessao invalida",
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "name": "sessionKey",
+          "in": "path",
+          "description": "Chave de sessao obtida do metodo obterChaveAcesso",
+          "required": true,
+          "type": "string"
+        }
+      ]
+    },
+    "/obter-chave-acesso": {
+      "post": {
         "summary": "Chave de acesso",
         "description": "Retorna a chave de acesso do sistema para que possa ser usado para obter uma nova chave de sessao\n",
         "parameters": [
@@ -55,35 +84,6 @@
           }
         }
       }
-    },
-    "/validarChaveAcesso/{sessionKey}": {
-      "get": {
-        "summary": "Valida a chave de acesso",
-        "description": "Permite validar a chave de sessao para analisar se o usuario ainda possui sessao para continuar a pesquisa dos dados",
-        "responses": {
-          "200": {
-            "description": "Retorna os dados basicos do usuario",
-            "schema": {
-              "$ref": "#/definitions/Usuario"
-            }
-          },
-          "401": {
-            "description": "Chave de sessao invalida",
-            "schema": {
-              "type": "string"
-            }
-          }
-        }
-      },
-      "parameters": [
-        {
-          "name": "sessionKey",
-          "in": "path",
-          "description": "Chave de sessao obtida do metodo obterChaveAcesso",
-          "required": true,
-          "type": "string"
-        }
-      ]
     }
   },
   "definitions": {
